@@ -1,0 +1,196 @@
+#!/bin/bash
+#	https://www.youtube.com/watch?v=ud_frfkt1t0
+#	Simulation of various strategies to win the following game:
+#		Player 1 picks two numbers (Limited to $simMin through $simMax) (Hereafter referred to as A and B)
+simMin=1
+simMax=100
+#		Player 1 reveals A to Player 2
+#		Player 2 must guess whether A is bigger or smaller than B
+#		Player 1 reveals B, and it is revealed whether Player 2 was correct
+#	The following strategies will be tested $simRunTime times:
+simRunTime=100000
+theLazinessDivider=1000
+#		A - Player 2 will guess randomly
+effectivenessA=0
+#		B - Player 2 will guess only that A is larger
+effectivenessB=0
+#		C - Player 2 will guess only that B is larger
+effectivenessC=0
+#		D - Player 2 will determine if A is larger than $simHalf and guess with that
+simHalf=$(($simMax/2))
+effectivenessD=0
+#		E - Player 2 will generate a random number (Limited to $simMin through $simMax) (Hereafter referred to as K)
+#			Player 2 will determine if A is larger than K and guess with that
+effectivenessE=0
+#	The winrate will be determined as a percentage
+#	Winrates will be logged to console
+#	Guesses and answers will be logged to logs/sim-$runDate
+runDate=`date '+%Y-%m-%d-%H:%M:%S'`
+
+echo "$simRunTime tests will be run per strategy. Total strategies is 5" 
+echo "Time of running is $runDate"
+echo "Range of numbers is $simMin through $simMax"
+#	Temporarily commenting this to not create a shit-ton of log files (line 32)
+#echo "$simRunTime tests will be run." >> log/sim-$runDate.txt
+
+#	This is strategy A.
+echo " "
+echo "Strategy A:"
+echo "    Randomly guess whether A is larger or smaller than B"
+for i in $(seq 1 $simRunTime);
+do
+#	Here we determine $a and $b randomly as a number between $simMin and $simMax
+	a=$(($simMin + RANDOM % $simMax))
+	b=$(($simMin + RANDOM % $simMax))
+#	And we determine $x as either 1 or 2 (also randomly)
+	x=$((1 + RANDOM % 2))
+#	Then we check if $x is 1, if it is we're gonna pretend he guessed that $a is larger
+	if [ "$x" -eq 1 ]
+	then
+#		(-gt is "greater than")
+		if [ "$a" -gt "$b" ]
+		then
+#			add to the winrate of strategy A
+			((effectivenessA++))
+		fi
+#	If $x is 2 then we pretend he guessed $b is larger
+	else
+#		(-lt is "lesser than")
+		if [ "$a" -lt "$b" ]
+		then
+#			add to the winrate of strategy A
+			((effectivenessA++))
+		fi
+	fi
+#	See line 32
+#	Prints the results of this test to the file
+#	 ie."A=30  B=40  X=1  a>b=0"
+#		"Current winrate is 238"
+#	echo "A=$a  B=$b  X=$x  a>b=$(($a > $b))" >> log/sim-$runDate.txt
+#	echo "Current winrate is $effectivenessA" >> log/sim-$runDate.txt
+done
+# Finally, prints $effectivenessA divided by laziness divider to get a percentage
+echo "$(($effectivenessA / $theLazinessDivider))% winrate on strategy A ($effectivenessA/$simRunTime tests completed)"
+# See line 32
+#echo "Finished with strategy A, moving onto strategy B" >> log/sim-$runDate.txt
+
+#	This is strategy B.
+echo " "
+echo "Strategy B:"
+echo "    Always guess that A is larger than B"
+for i in $(seq 1 $simRunTime);
+do
+#	Here we determine $a and $b randomly as a number between $simMin and $simMax
+	a=$(($simMin + RANDOM % $simMax))
+	b=$(($simMin + RANDOM % $simMax))
+	if [ "$a" -gt "$b" ]
+	then
+		((effectivenessB++))
+	fi
+#	See line 32
+#	Prints the results of this test to the file
+#	 ie."A=30  B=40  a>b=0"
+#		"Current winrate is 238"
+#	echo "A=$a  B=$b  a>b=$(($a > $b))" >> log/sim-$runDate.txt
+#	echo "Current winrate is $effectivenessB" >> log/sim-$runDate.txt
+done
+# Finally, prints $effectivenessB divided by laziness divider to get a percentage
+echo "$(($effectivenessB / $theLazinessDivider))% winrate on strategy B ($effectivenessB/$simRunTime tests completed)"
+# See line 32
+#echo "Finished with strategy B, moving onto strategy C" >> log/sim-$runDate.txt
+
+#	This is strategy C.
+echo " "
+echo "Strategy C:"
+echo "    Always guess that A is smaller than B"
+for i in $(seq 1 $simRunTime);
+do
+#	Here we determine $a and $b randomly as a number between $simMin and $simMax
+	a=$(($simMin + RANDOM % $simMax))
+	b=$(($simMin + RANDOM % $simMax))
+	if [ "$a" -lt "$b" ]
+	then
+		((effectivenessC++))
+	fi
+#	See line 32
+#	Prints the results of this test to the file
+#	 ie."A=30  B=40  a>b=0"
+#		"Current winrate is 238"
+#	echo "A=$a  B=$b  a>b=$(($a > $b))" >> log/sim-$runDate.txt
+#	echo "Current winrate is $effectivenessC" >> log/sim-$runDate.txt
+done
+# Finally, prints $effectivenessC divided by laziness divider to get a percentage
+echo "$(($effectivenessC / $theLazinessDivider))% winrate on strategy C ($effectivenessC/$simRunTime tests completed)"
+# See line 32
+#echo "Finished with strategy C, moving onto strategy D" >> log/sim-$runDate.txt
+
+#	This is strategy D.
+echo " "
+echo "Strategy D:               (Half of range maximum: $simHalf)"
+echo "    If A is larger than half of range maximum, guess that A is larger than B"
+echo "    If A is smaller, then guess that A is smaller than B"
+for i in $(seq 1 $simRunTime);
+do
+#	Here we determine $a and $b randomly as a number between $simMin and $simMax
+	a=$(($simMin + RANDOM % $simMax))
+	b=$(($simMin + RANDOM % $simMax))
+	if [ "$a" -gt "$simHalf" ]
+	then
+		if [ "$a" -gt "$b" ]
+		then
+			((effectivenessD++))
+		fi
+	else
+		if [ "$a" -lt "$b" ]
+		then
+			((effectivenessD++))
+		fi
+	fi
+#	See line 32
+#	Prints the results of this test to the file
+#	 ie."A=30  B=40  a>b=0"
+#		"Current winrate is 238"
+#	echo "A=$a  B=$b  a>b=$(($a > $b))" >> log/sim-$runDate.txt
+#	echo "Current winrate is $effectivenessD" >> log/sim-$runDate.txt
+done
+# Finally, prints $effectivenessD divided by laziness divider to get a percentage
+echo "$(($effectivenessD / $theLazinessDivider))% winrate on strategy D ($effectivenessD/$simRunTime tests completed)"
+# See line 32
+#echo "Finished with strategy D, moving onto strategy E" >> log/sim-$runDate.txt
+
+#	This is strategy E.
+echo " "
+echo "Strategy E:"
+echo "    Generate a random number withing range"
+echo "    If A is larger than the number, guess that A is larger than B"
+echo "    If A is smaller, then guess that A is smaller than B"
+for i in $(seq 1 $simRunTime);
+do
+#	Here we determine $a, $b, and $k randomly as a number between $simMin and $simMax
+	a=$(($simMin + RANDOM % $simMax))
+	b=$(($simMin + RANDOM % $simMax))
+	k=$(($simMin + RANDOM % $simMax))
+	if [ "$a" -gt "$k" ]
+	then
+		if [ "$a" -gt "$b" ]
+		then
+			((effectivenessE++))
+		fi
+	else
+		if [ "$a" -lt "$b" ]
+		then
+			((effectivenessE++))
+		fi
+	fi
+#	See line 32
+#	Prints the results of this test to the file
+#	 ie."A=30  B=40  a>b=0"
+#		"Current winrate is 238"
+#	echo "A=$a  B=$b  a>b=$(($a > $b))" >> log/sim-$runDate.txt
+#	echo "Current winrate is $effectivenessE" >> log/sim-$runDate.txt
+done
+# Finally, prints $effectivenessE divided by laziness divider to get a percentage
+echo "$(($effectivenessE / $theLazinessDivider))% winrate on strategy E ($effectivenessE/$simRunTime tests completed)"
+# See line 32
+#echo "Finished with strategy D" >> log/sim-$runDate.txt
+
