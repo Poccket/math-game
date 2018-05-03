@@ -19,4 +19,8 @@ The following strategies will be tested $simRunTime times:
 
 The winrate will be determined as a percentage   
 Winrates will be logged to console   
-Guesses and answers will be logged to log/sim-$runDate (If you go and remove the commenting lines)
+Guesses and answers will be logged to log/sim-$runDate (Warning!! These are p big text files, be careful)
+
+![A test with the range 1-100](https://raw.githubusercontent.com/Poccket/numberphile-math-game/master/range1-100.png)
+
+![A test with the range 1-100000](https://raw.githubusercontent.com/Poccket/numberphile-math-game/master/range1-100000.png)
