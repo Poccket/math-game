@@ -10,9 +10,13 @@ while :
 do
 	inp=""
 	a=$(($simMin + RANDOM % $simMax))
-	b=$(($simMin + RANDOM % $simMax))
-	echo "The first number is $a"
-	echo "Is A greater than B?"
+	b=$a
+	while [ "$b" -eq "$a" ]
+	do
+		b=$(($simMin + RANDOM % $simMax))
+	done
+	echo "The first number is $a, and the the second is unknown"
+	echo "Is the first number greater than the second?"
 	read inp
 	while [[ "$inp" != [yYnN12] && "$inp" != [yYnN][eEoO] && "$inp" != [yY][eE][sS] && "$inp" != ['><'] ]]
 	do
@@ -23,17 +27,17 @@ do
 	then
 		if [ "$a" -gt "$b" ]
 		then
-			echo "$a > $b, Good job!"
+			echo "Correct! $a > $b, Good job!"
 		else
-			echo "$a < $b, Nice try!"
+			echo "Incorrect! $a < $b, Nice try!"
 		fi
 	elif [[ "$inp" = [nN2] || "$inp" = [nN][oO] || "$inp" = ['<'] ]]
 	then
 		if [ "$a" -lt "$b" ]
 		then
-			echo "$a < $b, Good job!"
+			echo "Correct! $a < $b, Good job!"
 		else
-			echo "$a > $b, Nice try!"
+			echo "Incorrect! $a > $b, Nice try!"
 		fi
 	fi
 	echo ""
