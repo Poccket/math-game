@@ -19,3 +19,5 @@ The program I wrote tests three strategies:
 The winrate of each is determined as a percentage
 Winrates will be logged to the console
 And unlike /numberphile/ I won't be making logs because they take too much space 
+
+![A test with the range 1-3](https://raw.githubusercontent.com/Poccket/numberphile-math-game/master/montyhall/range1-3.png)
