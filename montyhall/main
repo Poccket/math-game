@@ -54,7 +54,7 @@ do
 	fi
 done
 # When it's done it will print $effectivenessA divided by the laziness divider to get a percentage
-echo "$(($effectivenessA / $theLazinessDivider))% winrate on test A ($effectivenessA/$simRunTime tests completed)"
+echo "$(($effectivenessA / $theLazinessDivider))% winrate on test A ($effectivenessA/$simRunTime tests successful)"
 
 #	This is strategy B.
 echo " "
@@ -89,7 +89,7 @@ do
 	fi
 done
 # When it's done it will print $effectivenessB divided by the laziness divider to get a percentage
-echo "$(($effectivenessB / $theLazinessDivider))% winrate on test B ($effectivenessB/$simRunTime tests completed)"
+echo "$(($effectivenessB / $theLazinessDivider))% winrate on test B ($effectivenessB/$simRunTime tests successful)"
 
 #	This is strategy C.
 echo " "
@@ -139,7 +139,7 @@ then
 fi
 done
 # When it's done it will print $effectivenessC divided by the laziness divider to get a percentage
-echo "$(($effectivenessC / $theLazinessDivider))% winrate on test A ($effectivenessC/$simRunTime tests completed)"
+echo "$(($effectivenessC / $theLazinessDivider))% winrate on test A ($effectivenessC/$simRunTime tests successful)"
 
 echo "Tests complete"
 echo " "

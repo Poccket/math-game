@@ -74,7 +74,7 @@ do
 	echo "Current winrate is $effectivenessA" >> log/sim-$runDate.txt
 done
 # Finally, prints $effectivenessA divided by laziness divider to get a percentage
-echo "$(($effectivenessA / $theLazinessDivider))% winrate on strategy A ($effectivenessA/$simRunTime tests completed)"
+echo "$(($effectivenessA / $theLazinessDivider))% winrate on strategy A ($effectivenessA/$simRunTime tests successful)"
 echo "Finished with strategy A, moving onto strategy B" >> log/sim-$runDate.txt
 
 #	This is strategy B.
@@ -101,7 +101,7 @@ do
 	echo "Current winrate is $effectivenessB" >> log/sim-$runDate.txt
 done
 # Finally, prints $effectivenessB divided by laziness divider to get a percentage
-echo "$(($effectivenessB / $theLazinessDivider))% winrate on strategy B ($effectivenessB/$simRunTime tests completed)"
+echo "$(($effectivenessB / $theLazinessDivider))% winrate on strategy B ($effectivenessB/$simRunTime tests successful)"
 echo "Finished with strategy B, moving onto strategy C" >> log/sim-$runDate.txt
 
 #	This is strategy C.
@@ -128,7 +128,7 @@ do
 	echo "Current winrate is $effectivenessC" >> log/sim-$runDate.txt
 done
 # Finally, prints $effectivenessC divided by laziness divider to get a percentage
-echo "$(($effectivenessC / $theLazinessDivider))% winrate on strategy C ($effectivenessC/$simRunTime tests completed)"
+echo "$(($effectivenessC / $theLazinessDivider))% winrate on strategy C ($effectivenessC/$simRunTime tests successful)"
 echo "Finished with strategy C, moving onto strategy D" >> log/sim-$runDate.txt
 
 #	This is strategy D.
@@ -164,7 +164,7 @@ do
 	echo "Current winrate is $effectivenessD" >> log/sim-$runDate.txt
 done
 # Finally, prints $effectivenessD divided by laziness divider to get a percentage
-echo "$(($effectivenessD / $theLazinessDivider))% winrate on strategy D ($effectivenessD/$simRunTime tests completed)"
+echo "$(($effectivenessD / $theLazinessDivider))% winrate on strategy D ($effectivenessD/$simRunTime tests successful)"
 echo "Finished with strategy D, moving onto strategy E" >> log/sim-$runDate.txt
 
 #	This is strategy E.
@@ -202,5 +202,5 @@ do
 	echo "Current winrate is $effectivenessE" >> log/sim-$runDate.txt
 done
 # Finally, prints $effectivenessE divided by laziness divider to get a percentage
-echo "$(($effectivenessE / $theLazinessDivider))% winrate on strategy E ($effectivenessE/$simRunTime tests completed)"
+echo "$(($effectivenessE / $theLazinessDivider))% winrate on strategy E ($effectivenessE/$simRunTime tests successful)"
 echo "Finished with strategy D" >> log/sim-$runDate.txt
