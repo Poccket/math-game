@@ -2,7 +2,7 @@
 
 This must be played with Python 3.5 (Or higher) due to how input() works.
 
-![](https://github.com/Poccket/math-game/tree/master/python/binary-count/python27v35.gif)
+![Python 2.7 crashing when taking input](https://raw.githubusercontent.com/Poccket/math-game/master/python/binary-count/python27v35.gif)
 
 This game is played as follows:
 
