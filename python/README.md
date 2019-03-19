@@ -1,6 +1,6 @@
-#binary-count.py
+# math-game - python
 
-  1.Player 1 picks a number within a range (Hereafter reffered to as A)
-  2.Player 2 guesses A, if correct end the game here.
-  3.If incorrect, Player 1 states whether it's higher or lower than A
-  4.Players repeat steps 2 and 3 until game end.
+My awful Python programs, mostly actual games and not tests.  
+In this directory:
+
+* ![binary-count](https://github.com/Poccket/math-game/tree/master/python/binary-count)
