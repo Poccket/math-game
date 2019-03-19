@@ -1,7 +1,6 @@
-# math-game
-# /bash/
+# math-game - bash
 
-Crappy bash programs to test math solutions or problems a few thousand times.
+Crappy bash programs to test math solutions or problems a few thousand times.  
 In this directory:
 
 * ![Monty Hall Problem](https://github.com/Poccket/math-game/tree/master/bash/montyhall)
