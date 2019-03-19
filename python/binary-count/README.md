@@ -1,6 +1,11 @@
 # math-game - python/binary-count
 
-This must be played with Python 3.5 (Or higher) due to how input() works.
+Make sure you're using the right version with your version of Python!
+
+* binary-count.py is for Python 3.5!
+* binary-count2-7.py is for Python 2.7!
+
+If you don't, it won't work!
 
 ![Python 2.7 crashing when taking input](https://raw.githubusercontent.com/Poccket/math-game/master/python/binary-count/python27v35.gif)
 
