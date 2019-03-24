@@ -1,4 +1,7 @@
 import sys
+if sys.version_info[0] != 3:
+	raise Exception("This version must be using Python 3!")
+
 import random
 import math
 
@@ -30,10 +33,7 @@ while play == True:
 	
 	win = False
 	num = random.randint(min,max)
-	if sys.version_info[0] == 3:
-		maxGuess = math.ceil(math.log2(max))
-	else:
-		maxGuess = math.ceil(math.log(max, 2))
+	maxGuess = math.ceil(math.log2(max))
 	if maxGuess < 1: maxGuess = 1;
 
 	print("Using min " + str(min) + ", and max " + str(max) + ".")
@@ -55,10 +55,7 @@ while play == True:
 	print("You win! The answer was " + str(num) + ", and your guess count was " + str(guessCount) + " out of " + str(maxGuess) + " par guesses")
 	replay = None
 	while True:
-		if sys.version_info[0] == 3:
-			replay = input("Would you like to play again? (y/n)")
-		else:
-			replay = raw_input("Would you like to play again? (y/n)")
+		replay = input("Would you like to play again? (y/n)")
 		if (replay == "y"):
 			break
 		if (replay == "n"):
