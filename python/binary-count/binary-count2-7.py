@@ -1,14 +1,36 @@
-import random
 import sys
+if sys.version_info[0] != 2:
+	raise Exception("This version must be using Python 2!")
+
+import random
 import math
+
+def canBeInt(inp):
+	try:
+		int(inp)
+		return True
+	except ValueError:
+		return False
+		
+def getInt(text="Enter number: "):
+	a = "NaN"
+	while True:
+		a = input(text)
+		if canBeInt(a):
+			return int(a)
+		else:
+			print("You need to input an integer!")
+
 play = True
 
 while play == True:
 	print("\n" * 100)
+	
 	min = 1
 	max = 100
-	# min = input("Enter minimum number: ")
-	max = input("Enter maximum number: ")
+	# min = getInt("Enter minimum number: ")
+	max = getInt("Enter maximum number: ")
+	
 	win = False
 	num = random.randint(min,max)
 	maxGuess = math.ceil(math.log(max, 2))
@@ -19,7 +41,7 @@ while play == True:
 	print("You must guess the number, and the computer will tell you if it's higher or lower.")
 	guessCount = 0
 	while True:
-		guess = input("Enter your guess: ")
+		guess = getInt("Enter your guess: ")
 		guessCount += 1
 		if (guess == num):
 			break
