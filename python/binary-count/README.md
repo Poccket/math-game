@@ -1,8 +1,8 @@
 # math-game - python/binary-count
 
-Make sure you're using the right version with your version of Python!
+[binary-count.py](https://github.com/Poccket/math-game/blob/master/python/binary-count/binary-count.py) works for Python 2.7 AND Python 3.5! But if you decide to use the exclusive versions, make sure you're using the right one!
 
-* binary-count.py is for Python 3.5!
+* binary-count3-5.py is for Python 3.5!
 * binary-count2-7.py is for Python 2.7!
 
 If you don't, it won't work!
